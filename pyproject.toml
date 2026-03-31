@@ -1,0 +1,26 @@
+[project]
+name = "ot-harjoitustyo"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Unna Mäntyniemi",email = "unna.mantyniemi@helsinki.fi"}
+]
+readme = "README.md"
+requires-python = "^3.12"
+dependencies = [
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "invoke (>=2.2.1,<3.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest-dotenv (>=0.5.2,<0.6.0)",
+    "coverage (>=7.13.5,<8.0.0)"
+]
