@@ -8,4 +8,4 @@ vaatimusmäärittely: https://github.com/unnamant/ot-harjoitustyo/blob/main/doku
 
 työaikakirjanpito: https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/ty%C3%B6aikakirjanpito
 
-changelog: 
+changelog: https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md
