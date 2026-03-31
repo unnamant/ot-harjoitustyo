@@ -1,6 +1,7 @@
-# Ohjelmistotekniikka, harjoitustyö
-## Budget-sovelluksen vaatimusmäärittely
-*Budget-sovelluksella* käyttäjän on mahdollista pitää kirjaa budjetoinnistaan.
+# BudgetApp
+*Budget-sovelluksella* käyttäjän on mahdollista pitää kirjaa **budjetoinnistaan**.
+
+## Dokumentaatio
 
 - [vaatimusmäärittely](https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
