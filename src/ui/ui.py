@@ -1,6 +1,11 @@
 from tkinter import ttk, constants, StringVar
+
+from src.repositories.user_repository import UserRepository
 from src.services.budget_service import BudgetService
+from src.services.user_service import UserService
 from src.ui.widgets import PeriodPicker, BudgetPicker
+from src.ui.login import LoginView
+from src.ui.register import RegisterView
 
 # Github Copilotilla generoitua koodia, jota on kuitenkin muokattu toimivaksi ja paremmaksi.
 # Koodi generoitu alkuperäisen tekstikäyttöliittymä-koodin pohjalta.
@@ -11,8 +16,21 @@ class UI:
         self._app = BudgetService()
         self._current_view = None
 
+        self._user_repo = UserRepository()
+        self._user_service = UserService(self._user_repo)
+
     def start(self):
-        self._show_menu()
+        self._show_login()
+
+    def _show_login(self):
+        self._hide_current_view()
+        self._current_view = LoginView(self._root, self._user_service, self._show_menu, self._show_register)
+        self._current_view.pack()
+
+    def _show_register(self):
+        self._hide_current_view()
+        self._current_view = RegisterView(self._root, self._user_service, self._show_login)
+        self._current_view.pack()
 
     def _hide_current_view(self):
         if self._current_view:
