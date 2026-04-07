@@ -16,11 +16,12 @@ def ask_period_key() -> str:
     if choice == "3":
         year = input("Anna vuosi: ")
         return year
-    
+
     elif choice not in ["1", "2", "3"]:
         print("Virhe: valitse 1, 2 tai 3.")
         return ask_period_key()
-    
+
+
 def show_budgets_and_choose_index(app, prompt: str = "Valitse budjetti indeksin mukaan: ") -> int | None:
     budgets = app.list_budgets()
     if not budgets:

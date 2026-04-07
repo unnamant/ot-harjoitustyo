@@ -10,7 +10,7 @@ class BudgetService:
 
     def list_budgets(self):
         return self.budgets
-    
+
     def delete_budget(self, index):
         if 0 <= index < len(self.budgets):
             self.budgets.pop(index)
@@ -19,7 +19,7 @@ class BudgetService:
 
     def add_entry(self, index, type, amount, category):
         self.budgets[index].entries.append(Entry(type, amount, category))
-    
+
     def income_total(self, index):
         return self.budgets[index].income_total()
 
@@ -36,3 +36,5 @@ class BudgetService:
                 if e.category == category:
                     results.append((b, e))
         return results
+
+budget_service = BudgetService()

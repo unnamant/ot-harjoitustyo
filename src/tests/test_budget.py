@@ -1,6 +1,7 @@
 import unittest
 from src.services.budget_service import BudgetService
 
+
 class TestBudgetService(unittest.TestCase):
 
     def setUp(self):
