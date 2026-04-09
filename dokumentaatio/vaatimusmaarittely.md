@@ -4,21 +4,21 @@ Sovelluksen tarkoituksena on antaa työkaluja käyttäjälle auttaakseen häntä
 ## Budget-sovelluksen tarjoama toiminnallisuus (perusversio)
 ### Ennen kirjautumista
 Rekisteröityminen:
-- Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
-  - Käyttäjätunnuksen täytyy olla uniikki ja yli 3 merkkiä pitkä
-  - Salasanan täytyy olla yli 8 merkkiä pitkä, sisältää ainakin yhden numeron ja yhden erikoismerkin
+- [x] Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
+  - [x] Käyttäjätunnuksen täytyy olla uniikki ja yli 3 merkkiä pitkä
+  - [x] Salasanan täytyy olla yli 8 merkkiä pitkä, sisältää ainakin yhden numeron ja yhden erikoismerkin
 
 Kirjautuminen:
-- Käyttäjä voi kirjautua järjestelmään
-  - Jos käyttäjätunnusta ei ole tai se on väärin, järjestelmä ilmoittaa siitä
-  - Jos salasana on väärin, järjestelmä ilmoittaa siitä
+- [x] Käyttäjä voi kirjautua järjestelmään
+  - [x] Jos käyttäjätunnusta ei ole tai se on väärin, järjestelmä ilmoittaa siitä
+  - [x] Jos salasana on väärin, järjestelmä ilmoittaa siitä
 ### Kirjautumisen jälkeen
-- Käyttäjä voi valita budjetoinnin ajan: päivä, kuukausi tai vuosi
-- Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
-- Käyttäjä näkee tulojen ja menojen eron.
+- [x] Käyttäjä voi valita budjetoinnin ajan: päivä, kuukausi tai vuosi
+- [x] Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
+- [x] Käyttäjä näkee tulojen ja menojen eron.
 - Budjetin tiedot avautuvat "listaa budjetit" kohdassa
 
-Käyttäjä voi nähdä vain omat budjetoinnit.
+- [x] Käyttäjä voi nähdä vain omat budjetoinnit.
 
 Käyttäjä voi kirjautua ulos järjestelmästä.
 ## Perusversiota laajentavat jatkokehitysideat
