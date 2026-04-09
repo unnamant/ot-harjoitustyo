@@ -8,5 +8,5 @@
 | 31.3. | 2h 45 min | invoke, changelog, testien tekeminen, toiminnallisuuden hiominen |
 | 7.4.  | 4h        | toiminnallisuuden lisääminen (käyttäjän kirjautuminen ja rekisteröityminen), changelog ja README päivitykset, tekstikäyttöliittymästä graafiseksi käyttöliittymäksi, varmistus että sovellus toimii virtuaalityöasemassa|
 | 8.4.  | 1h        | SQLite tietokannan käyttöönoton aloittaminen |
-| 9.4.  | 3h        | SQLite tietokannan lisääminen sovellukseen, changelog päivitys |
-| yht.  | 14h 5 min |
+| 9.4.  | 4h        | SQLite tietokannan lisääminen sovellukseen, changelog päivitys, arkkitehtuurikuvaus |
+| yht.  | 15h 5 min |
