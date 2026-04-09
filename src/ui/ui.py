@@ -1,5 +1,8 @@
 from tkinter import ttk, constants, StringVar
 
+from src.database_connection import get_database_connection
+from src.initialize_database import initialize_database
+from src.repositories.budget_repository import BudgetRepository
 from src.repositories.user_repository import UserRepository
 from src.services.budget_service import BudgetService
 from src.services.user_service import UserService
@@ -13,11 +16,19 @@ from src.ui.register import RegisterView
 class UI:
     def __init__(self, root):
         self._root = root
-        self._app = BudgetService()
         self._current_view = None
 
-        self._user_repo = UserRepository()
+        self._connection = get_database_connection()
+        initialize_database(self._connection)
+
+        self._user_repo = UserRepository(self._connection)
+        self._budget_repo = BudgetRepository(self._connection)
         self._user_service = UserService(self._user_repo)
+
+        self._app = BudgetService(
+            self._budget_repo,
+            get_current_username=lambda: self._user_service.current_user().username if self._user_service.current_user() else None
+        )
 
     def start(self):
         self._show_login()
@@ -94,19 +105,19 @@ class MenuView:
             row=0, column=0, sticky=constants.W, padx=5, pady=5
         )
 
-        ttk.Button(master=self._frame, text="Lisää budjetti:", command=handle_add_budget).grid(
+        ttk.Button(master=self._frame, text="Lisää budjetti", command=handle_add_budget).grid(
             row=1, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
-        ttk.Button(master=self._frame, text="Lisää tulo/meno:", command=handle_add_entry).grid(
+        ttk.Button(master=self._frame, text="Lisää tulo/meno", command=handle_add_entry).grid(
             row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
-        ttk.Button(master=self._frame, text="Listaa budjetit:", command=handle_list_budgets).grid(
+        ttk.Button(master=self._frame, text="Listaa budjetit", command=handle_list_budgets).grid(
             row=3, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
-        ttk.Button(master=self._frame, text="Poista budjetti:", command=handle_delete_budget).grid(
+        ttk.Button(master=self._frame, text="Poista budjetti", command=handle_delete_budget).grid(
             row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
-        ttk.Button(master=self._frame, text="Näytä saldo:", command=handle_show_balance).grid(
+        ttk.Button(master=self._frame, text="Näytä saldo", command=handle_show_balance).grid(
             row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
 
@@ -309,7 +320,7 @@ class AddEntryView:
         self._handle_back = handle_back
 
         self._picker = None
-        self._type = StringVar()
+        self._entry_type = StringVar()
         self._amount = StringVar()
         self._category = StringVar()
         self._message = StringVar()
@@ -334,7 +345,7 @@ class AddEntryView:
         ttk.Label(master=self._frame, text="Tyyppi").grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
         ttk.Combobox(
             master=self._frame,
-            textvariable=self._type,
+            textvariable=self._entry_type,
             values=["tulo", "meno"],
             state="readonly"
         ).grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
@@ -368,8 +379,8 @@ class AddEntryView:
             self._message.set("Valitse budjetti listasta.")
             return
 
-        type = self._type.get().strip().lower()
-        if type not in ("tulo", "meno"):
+        entry_type = self._entry_type.get().strip().lower()
+        if entry_type not in ("tulo", "meno"):
             self._message.set("Virhe: tyyppi pitää olla 'tulo' tai 'meno'.")
             return
 
@@ -388,10 +399,10 @@ class AddEntryView:
             self._message.set("Virhe: kategoria puuttuu.")
             return
 
-        self._app.add_entry(index, type, amount, category)
+        self._app.add_entry(index, entry_type, amount, category)
         self._picker.refresh()
 
-        if type == "tulo":
+        if entry_type == "tulo":
             self._message.set("Tulo lisätty budjettiin.")
         else:
             self._message.set("Meno lisätty budjettiin.")

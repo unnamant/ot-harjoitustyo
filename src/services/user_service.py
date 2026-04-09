@@ -8,7 +8,7 @@ class UserService:
         self._user_repository = user_repository
         self._current_user: User
 
-    def _current_user(self):
+    def current_user(self):
         return self._current_user
 
     def logout(self):

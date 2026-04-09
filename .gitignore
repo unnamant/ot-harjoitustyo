@@ -3,3 +3,8 @@ __pycache__/
 htmlcov/
 .coverage
 .venv/
+
+data/database.sqlite
+data/budgets.csv
+data/test-database.sqlite
+data/test-budgets.csv

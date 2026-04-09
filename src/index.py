@@ -3,7 +3,7 @@ from src.ui.ui import UI
 
 def main():
     window = Tk()
-    window.title("Budget-app")
+    window.title("The Budget App")
     ui = UI(window)
     ui.start()
     window.mainloop()
