@@ -3,11 +3,13 @@
 
 ## Dokumentaatio
 
-- [vaatimusmäärittely](https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+- [vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 
-- [työaikakirjanpito](https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/ty%C3%B6aikakirjanpito.md)
+- [työaikakirjanpito](dokumentaatio/työaikakirjanpito.md)
 
-- [changelog](https://github.com/unnamant/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+- [changelog](dokumentaatio/changelog.md)
+
+- [arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 
 ## Sovelluksen asennus ja käynnistys
 Asenna riippuvuudet komennolla:
