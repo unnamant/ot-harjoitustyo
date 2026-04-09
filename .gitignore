@@ -8,3 +8,7 @@ data/database.sqlite
 data/budgets.csv
 data/test-database.sqlite
 data/test-budgets.csv
+
+#tekstikäyttöliittymään liittyviä tiedostoja
+budgets.py
+budget_helper.py
