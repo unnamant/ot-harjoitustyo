@@ -16,6 +16,7 @@ Kirjautuminen:
 - Käyttäjä voi valita budjetoinnin ajan: päivä, kuukausi tai vuosi
 - Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
 - Käyttäjä näkee tulojen ja menojen eron.
+- Budjetin tiedot avautuvat "listaa budjetit" kohdassa
 
 Käyttäjä voi nähdä vain omat budjetoinnit.
 
