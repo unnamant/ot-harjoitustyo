@@ -17,6 +17,7 @@ Kirjautuminen:
 - [x] Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
 - [x] Käyttäjä näkee tulojen ja menojen eron.
 - Budjetin tiedot avautuvat "listaa budjetit" kohdassa
+- Käyttäjä voi suodattaa budjetteja
 
 - [x] Käyttäjä voi nähdä vain omat budjetoinnit.
 
