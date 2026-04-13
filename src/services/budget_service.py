@@ -7,8 +7,7 @@ class BudgetService:
 
     def add_budget(self, name, budget_period, comment=None):
         user_id = self._require_user()
-        budget_period = Budget(None, name, budget_period, comment)
-        return self._budget_repository.create(user_id, budget_period)
+        return self._budget_repository.create(user_id, Budget(None, name, budget_period, comment))
 
     def list_budgets(self):
         user_id = self._require_user()
@@ -34,7 +33,7 @@ class BudgetService:
         return self.list_budgets()[index].income_total()
 
     def expense_total(self, index):
-        return self.list_budgets()[index].expence_total()
+        return self.list_budgets()[index].expense_total()
 
     def balance(self, index):
         return self.list_budgets()[index].balance()

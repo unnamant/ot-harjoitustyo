@@ -15,15 +15,15 @@ class BudgetRepository:
             for r in rows
         ]
 
-    def create(self, username: str, budget: Budget):
+    def create(self, user_id: int, budget: Budget):
         cursor = self._connection.cursor()
         cursor.execute(
             "INSERT INTO budgets (user_id, name, budget_period, comment) VALUES (?, ?, ?, ?)",
-            (username, budget.name, budget.budget_period, budget.comment)
+            (user_id, budget.name, budget.budget_period, budget.comment)
         )
         self._connection.commit()
 
-        return Budget(budget.name, budget.budget_period, budget.comment, cursor.lastrowid)
+        return Budget(cursor.lastrowid, budget.name, budget.budget_period, budget.comment)
 
     def delete(self, user_id: int, budget_id: int):
         cursor = self._connection.cursor()
@@ -57,7 +57,7 @@ class BudgetRepository:
             (budget_id, entry.entry_type, entry.amount, entry.category),
         )
         self._connection.commit()
-        return Entry(entry.entry_type, entry.amount, entry.category, cursor.lastrowid)
+        return Entry(cursor.lastrowid, entry.entry_type, entry.amount, entry.category)
 
     def list_by_budget(self, budget_id: int):
         cursor = self._connection.cursor()

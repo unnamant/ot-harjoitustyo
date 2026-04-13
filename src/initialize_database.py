@@ -30,7 +30,7 @@ def create_tables(connection):
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS budgets (
             id INTEGER PRIMARY KEY,
-            user_id INTEGER NOT NULL,
+            user_id TEXT NOT NULL,
             name TEXT NOT NULL,
             budget_period TEXT NOT NULL,
             comment TEXT,
@@ -41,20 +41,21 @@ def create_tables(connection):
     connection.commit()
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS entries (
-        id INTEGER PRIMARY KEY,
-        budget_id INTEGER NOT NULL,
-        type TEXT NOT NULL CHECK(type IN ('tulo','meno')),
-        amount REAL NOT NULL,
-        category TEXT NOT NULL,
-        FOREIGN KEY (budget_id) REFERENCES budgets(id)
-    );
+        CREATE TABLE IF NOT EXISTS entries (
+            id INTEGER PRIMARY KEY,
+            budget_id INTEGER NOT NULL,
+            type TEXT NOT NULL CHECK(type IN ('tulo','meno')),
+            amount REAL NOT NULL,
+            category TEXT NOT NULL,
+            FOREIGN KEY (budget_id) REFERENCES budgets(id)
+        );
     """)
 
     connection.commit()
 
-def initialize_database(connection):
-    connection = get_database_connection()
+def initialize_database(connection = None):
+    if connection is None:
+        connection = get_database_connection()
     create_tables(connection)
 
 if __name__ == "__main__":
