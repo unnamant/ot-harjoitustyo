@@ -9,6 +9,6 @@
 | 7.4.  | 4h        | toiminnallisuuden lisääminen (käyttäjän kirjautuminen ja rekisteröityminen), changelog ja README päivitykset, tekstikäyttöliittymästä graafiseksi käyttöliittymäksi, varmistus että sovellus toimii virtuaalityöasemassa|
 | 8.4.  | 1h        | SQLite tietokannan käyttöönoton aloittaminen |
 | 9.4.  | 4h        | SQLite tietokannan lisääminen sovellukseen, changelog päivitys, arkkitehtuurikuvaus |
-| 10.4. | 2h        | Testin tekemisen aloittaminen |
-| 13.4. | 30 min    | Testikattavuuden tarkistus ja testien pushaus |
+| 10.4. | 2h        | testien tekemisen aloittaminen |
+| 13.4. | 30 min    | testikattavuuden tarkistus ja testien pushaus |
 | yht.  | 17h 35 min |
