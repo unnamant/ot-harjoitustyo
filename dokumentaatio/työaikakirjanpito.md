@@ -11,5 +11,5 @@
 | 9.4.  | 4h         | SQLite tietokannan lisääminen sovellukseen, changelog päivitys, arkkitehtuurikuvaus |
 | 10.4. | 2h         | testien tekemisen aloittaminen |
 | 13.4. | 30 min     | testikattavuuden tarkistus ja testien pushaus |
-| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta |
+| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen |
 | yht.  | 18h 35 min |
