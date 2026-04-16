@@ -14,3 +14,6 @@
 - Lisätty UserService-luokka käsittelemään käyttäjän rekisteröityminen ja kirjautuminen
 - Lisätty Pylint ja siistitty koodia sen avulla
 - Käyttäjätiedot, budjetit sekä tulo- ja meno-merkinnät tallentuvat SQLite tietokantaan
+
+### Viikko 5
+- Lisätty toiminnallisuuksia sovellukseen: Valitun budjetin tietojen avaaminen listasta
