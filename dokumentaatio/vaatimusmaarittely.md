@@ -16,12 +16,12 @@ Kirjautuminen:
 - [x] Käyttäjä voi valita budjetoinnin ajan: päivä, kuukausi tai vuosi
 - [x] Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
 - [x] Käyttäjä näkee tulojen ja menojen eron.
-- Budjetin tiedot avautuvat "listaa budjetit" kohdassa
+- [x] Budjetin tiedot avautuvat "listaa budjetit" kohdassa
 - Käyttäjä voi suodattaa budjetteja
 
 - [x] Käyttäjä voi nähdä vain omat budjetoinnit.
 
-Käyttäjä voi kirjautua ulos järjestelmästä.
+- [x] Käyttäjä voi kirjautua ulos järjestelmästä.
 ## Perusversiota laajentavat jatkokehitysideat
 Ajan salliessa perusversiota täydennetään esim. seuraavilla toiminnallisuuksilla:
 - Käyttäjä voi merkitä, miten on pysynyt budjetissa/kuinka budjetointi on onnistunut
