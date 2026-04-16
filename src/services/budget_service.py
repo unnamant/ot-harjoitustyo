@@ -29,6 +29,10 @@ class BudgetService:
         budget = budgets[index]
         return self._budget_repository.add(budget.id, Entry(None, entry_type, amount, category))
 
+    def list_entries(self, index):
+        budgets = self.list_budgets()
+        return budgets[index].entries
+
     def income_total(self, index):
         return self.list_budgets()[index].income_total()
 

@@ -38,6 +38,10 @@ class UI:
         self._current_view = LoginView(self._root, self._user_service, self._show_menu, self._show_register)
         self._current_view.pack()
 
+    def _handle_logout(self):
+        self._user_service.logout()
+        self._show_login()
+
     def _show_register(self):
         self._hide_current_view()
         self._current_view = RegisterView(self._root, self._user_service, self._show_login)
@@ -57,6 +61,7 @@ class UI:
             handle_list_budgets=self._show_list_budgets,
             handle_delete_budget=self._show_delete_budget,
             handle_show_balance=self._show_balance,
+            handle_logout=self._handle_logout
         )
         self._current_view.pack()
 
@@ -72,7 +77,17 @@ class UI:
 
     def _show_list_budgets(self):
         self._hide_current_view()
-        self._current_view = ListBudgetsView(self._root, self._app, self._show_menu)
+        self._current_view = ListBudgetsView(self._root, self._app, self._show_menu, self._show_budget)
+        self._current_view.pack()
+
+    def _show_budget(self, budget_index):
+        self._hide_current_view()
+        self._current_view = BudgetDetailsView(
+            self._root,
+            self._app,
+            budget_index,
+            handle_back=self._show_list_budgets
+        )
         self._current_view.pack()
 
     def _show_delete_budget(self):
@@ -85,12 +100,11 @@ class UI:
         self._current_view = BalanceView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
-
 class MenuView:
-    def __init__(self, root, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance):
+    def __init__(self, root, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout):
         self._root = root
         self._frame = None
-        self._initialize(handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance)
+        self._initialize(handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout)
 
     def pack(self):
         self._frame.pack(fill=constants.X, padx=10, pady=10)
@@ -98,7 +112,7 @@ class MenuView:
     def destroy(self):
         self._frame.destroy()
 
-    def _initialize(self, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance):
+    def _initialize(self, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout):
         self._frame = ttk.Frame(master=self._root)
 
         ttk.Label(master=self._frame, text="Budjettisovellus").grid(
@@ -120,8 +134,11 @@ class MenuView:
         ttk.Button(master=self._frame, text="Näytä saldo", command=handle_show_balance).grid(
             row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
+        ttk.Button(master=self._frame, text="Kirjaudu ulos", command=handle_logout).grid(
+            row=6, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
+        )
 
-        self._frame.grid_columnconfigure(0, weight=1, minsize=320)
+        self._frame.grid_columnconfigure(0, weight=1, minsize=300)
 
 
 class AddBudgetView:
@@ -158,8 +175,8 @@ class AddBudgetView:
         ttk.Label(master=self._frame, text="Kommentti").grid(row=3, column=0, sticky=constants.W, padx=5, pady=5)
         ttk.Entry(master=self._frame, textvariable=self._comment).grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Button(master=self._frame, text="Tallenna", command=self._submit).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Tallenna", command=self._submit).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         ttk.Label(master=self._frame, textvariable=self._message).grid(row=5, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
@@ -184,10 +201,55 @@ class AddBudgetView:
 
 
 class ListBudgetsView:
-    def __init__(self, root, app, handle_back):
+    def __init__(self, root, app, handle_back, show_budget):
         self._root = root
         self._app = app
         self._handle_back = handle_back
+        self._handle_open_budget = show_budget
+
+        self._picker = None
+        self._frame = None
+        self._message = StringVar()
+        self._initialize()
+
+    def pack(self):
+        self._frame.pack(fill=constants.BOTH, expand=True, padx=10, pady=10)
+
+    def destroy(self):
+        self._frame.destroy()
+
+    def _open(self):
+        index = self._picker.get_selected_index()
+        if index is None:
+            self._message.set("Valitse budjetti listasta.")
+            return
+        self._handle_open_budget(index)
+
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+
+        ttk.Label(master=self._frame, text="Budjetit").grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
+
+        self._picker = BudgetPicker(self._frame, self._app)
+        self._picker.grid(row=1, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
+        
+        ttk.Button(master=self._frame, text="Avaa budjetti", command=self._open).grid(
+        row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(
+        row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+
+        self._frame.grid_columnconfigure(0, weight=1, minsize=300)
+        self._frame.grid_columnconfigure(1, weight=1, minsize=300)
+    
+
+class BudgetDetailsView:
+    def __init__(self, root, app, budget_index, handle_back):
+        self._root = root
+        self._app = app
+        self._budget_index = budget_index
+        self._handle_back = handle_back
+
         self._frame = None
         self._initialize()
 
@@ -200,16 +262,33 @@ class ListBudgetsView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
-        ttk.Label(master=self._frame, text="Budjetit").grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
+        budget = self._app.list_budgets()[self._budget_index]
+        entries = self._app.list_entries(self._budget_index)
 
-        budgets = self._app.list_budgets()
-        text = "\n".join([f"{i}. {b.name} {b.budget_period}" for i, b in enumerate(budgets)]) or "Ei budjetteja."
+        ttk.Label(master=self._frame, text=f"{budget.name} ({budget.budget_period})").grid(
+        row=0, column=0, sticky=constants.W, padx=5, pady=5)
 
-        ttk.Label(master=self._frame, text=text, justify=constants.LEFT).grid(row=1, column=0, sticky=constants.W, padx=5, pady=5)
-        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+        if entries:
+            text = "\n".join([f"{e.entry_type} {e.amount}€ ({e.category})" for e in entries])
+        else:
+            text = "Ei tuloja/menoja."
 
-        self._frame.grid_columnconfigure(0, weight=1, minsize=320)
+        balance = self._app.balance(self._budget_index)
 
+        ttk.Label(master=self._frame, text=text, justify=constants.LEFT).grid(
+            row=1, column=0, sticky=constants.W, padx=5, pady=5
+        )
+
+        ttk.Label(
+            master=self._frame,
+            text=f"Saldo: {balance} €"
+        ).grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
+
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(
+            row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5
+        )
+
+        self._frame.grid_columnconfigure(0, weight=1, minsize=300)
 
 class DeleteBudgetView:
     def __init__(self, root, app, handle_back):
@@ -245,13 +324,13 @@ class DeleteBudgetView:
             master=self._frame,
             text="Poista",
             command=self._submit
-        ).grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ).grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         ttk.Button(
             master=self._frame,
             text="Takaisin",
             command=self._handle_back
-        ).grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ).grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         ttk.Label(master=self._frame, textvariable=self._message).grid(
             row=3, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5
@@ -298,8 +377,8 @@ class BalanceView:
             row=1, column=0, columnspan=2, sticky=(constants.E, constants.W)
         )
 
-        ttk.Button(master=self._frame, text="Laske", command=self._submit).grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Laske", command=self._submit).grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         ttk.Label(master=self._frame, textvariable=self._message).grid(row=3, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)
@@ -311,7 +390,6 @@ class BalanceView:
             return
 
         self._message.set(f"Saldo: {self._app.balance(index)} €")
-
 
 class AddEntryView:
     def __init__(self, root, app, handle_back):
@@ -361,10 +439,10 @@ class AddEntryView:
         )
 
         ttk.Button(master=self._frame, text="Tallenna", command=self._submit).grid(
-            row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
+            row=5, column=1, sticky=(constants.E, constants.W), padx=5, pady=5
         )
         ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(
-            row=5, column=1, sticky=(constants.E, constants.W), padx=5, pady=5
+            row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
 
         ttk.Label(master=self._frame, textvariable=self._message).grid(

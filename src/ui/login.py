@@ -31,8 +31,8 @@ class LoginView:
         ttk.Label(self._frame, text="Salasana").grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
         ttk.Entry(self._frame, textvariable=self._password, show="*").grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Button(self._frame, text="Kirjaudu", command=self._login).grid(row=3, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        ttk.Button(self._frame, text="Rekisteröidy", command=self._handle_show_register).grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(self._frame, text="Kirjaudu", command=self._login).grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(self._frame, text="Rekisteröidy", command=self._handle_show_register).grid(row=3, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._message_label = ttk.Label(self._frame, textvariable=self._message)
         self._message_label.grid(row=4, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5) 
