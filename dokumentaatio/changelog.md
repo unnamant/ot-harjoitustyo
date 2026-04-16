@@ -17,3 +17,4 @@
 
 ### Viikko 5
 - Lisätty toiminnallisuuksia sovellukseen: Valitun budjetin tietojen avaaminen listasta
+- Käyttäjä pystyy kirjautumaan ulos sovelluksesta
