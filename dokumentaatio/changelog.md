@@ -16,5 +16,6 @@
 - Käyttäjätiedot, budjetit sekä tulo- ja meno-merkinnät tallentuvat SQLite tietokantaan
 
 ### Viikko 5
-- Lisätty toiminnallisuuksia sovellukseen: Valitun budjetin tietojen avaaminen listasta
 - Käyttäjä pystyy kirjautumaan ulos sovelluksesta
+- Käyttäjä pystyy avaamaan valitun budjetin tiedot listasta
+- Käyttäjä pystyy etsimään budjetin sen tulon tai menon kategorian mukaan
