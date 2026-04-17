@@ -44,12 +44,7 @@ class BudgetService:
 
     def filter_entries_by_category(self, category):
         user_id = self._require_user()
-        finds = self._budget_repository.filter_by_category_for_user(user_id, category)
-        budgets = {b.id: b for b in self.list_budgets()}
-        results = []
-        for budget_id, entry in finds:
-            results.append((budgets[budget_id], entry))
-        return results
+        return self._budget_repository.filter_by_category_for_user(user_id, category)
 
     def _require_user(self):
         username = self._get_current_username()
