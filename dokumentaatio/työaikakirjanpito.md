@@ -6,10 +6,11 @@
 | 26.3. | 1h 20 min  | toiminnallisuuden toteuttamisen aloittaminen |
 | 30.3. | 1h 30 min  | toiminnallisuuden jatkaminen |
 | 31.3. | 2h 45 min  | invoke, changelog, testien tekeminen, toiminnallisuuden hiominen |
-| 7.4.  | 4h         | toiminnallisuuden lisääminen (käyttäjän kirjautuminen ja rekisteröityminen), changelog ja README päivitykset, tekstikäyttöliittymästä graafiseksi käyttöliittymäksi, varmistus että sovellus toimii virtuaalityöasemassa|
+| 7.4.  | 4h         | toiminnallisuuden lisääminen (käyttäjän kirjautuminen ja rekisteröityminen), changelog ja README päivitykset, tekstikäyttöliittymästä graafiseksi käyttöliittymäksi, varmistus että sovellus toimii virtuaalityöasemassa |
 | 8.4.  | 1h         | SQLite tietokannan käyttöönoton aloittaminen |
 | 9.4.  | 4h         | SQLite tietokannan lisääminen sovellukseen, changelog päivitys, arkkitehtuurikuvaus |
 | 10.4. | 2h         | testien tekemisen aloittaminen |
 | 13.4. | 30 min     | testikattavuuden tarkistus ja testien pushaus |
-| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen |
-| yht.  | 18h 35 min |
+| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen    |
+| 17.4. | 1h         | toiminnallisuuden lisääminen: Budjetin etsiminen menon tai tulon kategorian mukaan |
+| yht.  | 19h 35 min |
