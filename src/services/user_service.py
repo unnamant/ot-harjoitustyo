@@ -3,7 +3,15 @@ import re
 from src.entities.user import User
 from src.repositories.user_repository import UserRepository
 
+class InvalidCredentialsError(Exception):
+    pass
+
+
+class UsernameExistsError(Exception):
+    pass
+
 class UserService:
+    """Käyttäjään liittyvistä toiminnoista vastaava luokka."""
     def __init__(self, user_repository = UserRepository):
         self._user_repository = user_repository
         self._current_user: User
@@ -16,10 +24,10 @@ class UserService:
 
     def register(self, username: str, password: str):
         if len(username) <= 3:
-            raise ValueError("Käyttäjätunnuksen tulee olla yli 3 merkkiä pitkä")
+            raise InvalidCredentialsError("Käyttäjätunnuksen tulee olla yli 3 merkkiä pitkä")
 
         if self._user_repository.find_by_username(username):
-            raise ValueError("Käyttäjätunnus on jo käytössä")
+            raise UsernameExistsError("Käyttäjätunnus on jo käytössä")
 
         self._validate_password(password)
 
@@ -30,22 +38,24 @@ class UserService:
     def login(self, username: str, password: str):
         user = self._user_repository.find_by_username(username)
         if not user:
-            raise ValueError("Käyttäjätunnus on väärä tai sitä ei ole")
+            raise InvalidCredentialsError("Käyttäjätunnus on väärä tai sitä ei ole")
         if user.password != self._hash_password(password):
-            raise ValueError("Väärä salasana")
+            raise InvalidCredentialsError("Väärä salasana")
 
         self._current_user = user
         return user
 
     def _validate_password(self, password: str):
         if len(password) <= 8:
-            raise ValueError("Salasanan tulee olla yli 8 merkkiä pitkä")
+            raise InvalidCredentialsError("Salasanan tulee olla yli 8 merkkiä pitkä")
 
         if not re.search(r"\d", password):
-            raise ValueError("Salasanan täytyy sisältää ainakin yksi numero")
+            raise InvalidCredentialsError("Salasanan täytyy sisältää ainakin yksi numero")
 
         if not re.search(r"[^a-zA-Z0-9]", password):
-            raise ValueError("Salasanan täytyy sisältää ainakin yksi erikoismerkki.")
+            raise InvalidCredentialsError("Salasanan täytyy sisältää ainakin yksi erikoismerkki.")
 
     def _hash_password(self, password: str):
         return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
+user_service = UserService()
