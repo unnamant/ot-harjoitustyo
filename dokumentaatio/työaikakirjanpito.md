@@ -13,4 +13,5 @@
 | 13.4. | 30 min     | testikattavuuden tarkistus ja testien pushaus |
 | 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen    |
 | 17.4. | 1h         | toiminnallisuuden lisääminen: Budjetin etsiminen menon tai tulon kategorian mukaan |
-| yht.  | 19h 35 min |
+| 20.4. | 3h         | sekvenssikaavioiden lisääminen arkkitehtuuriin, testien tekeminen budget- ja user-serviceihin          |
+| yht.  | 22h 35 min |
