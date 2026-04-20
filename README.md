@@ -1,5 +1,7 @@
 # BudgetApp
 *Budget-sovelluksella* käyttäjän on mahdollista pitää kirjaa **budjetoinnistaan**.
+## Viimeisin release
+- [viikon 5 release](../../releases/latest)
 
 ## Dokumentaatio
 
