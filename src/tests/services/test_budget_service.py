@@ -33,7 +33,7 @@ class FakeBudgetRepository:
         self.budgets = [b for b in self.budgets if b.id != budget_id and user_id == b.user_id]
         self.entries = [e for e in self.entries if e.budget_id != budget_id]
         return True
-    
+
 class TestBudgetService(unittest.TestCase):
     def setUp(self):
         def get_current_username():
@@ -50,7 +50,7 @@ class TestBudgetService(unittest.TestCase):
         budgets = self.budget_service.list_budgets()
         self.assertEqual(len(budgets), 1)
 
-    def test_add_entry(self):
+    def test_add_entry_and_list_entries(self):
         self.budget_service.add_budget("Budjetti 1", "21.4.", "")
 
         self.budget_service.add_entry(0, "tulo", 1000, "palkka")
@@ -59,6 +59,7 @@ class TestBudgetService(unittest.TestCase):
         self.assertEqual(self.budget_service.income_total(0), 1000)
         self.assertEqual(self.budget_service.expense_total(0), 200)
         self.assertEqual(self.budget_service.balance(0), 800)
+        self.assertEqual(len(self.budget_service.list_entries(0)), 2)
 
     def test_delete_budget(self):
         self.budget_service.add_budget("Budjetti 1", "21.4.", "")
