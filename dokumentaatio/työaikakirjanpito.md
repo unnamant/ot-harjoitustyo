@@ -11,7 +11,7 @@
 | 9.4.  | 4h         | SQLite tietokannan lisääminen sovellukseen, changelog päivitys, arkkitehtuurikuvaus |
 | 10.4. | 2h         | testien tekemisen aloittaminen |
 | 13.4. | 30 min     | testikattavuuden tarkistus ja testien pushaus |
-| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen    |
+| 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen |
 | 17.4. | 1h         | toiminnallisuuden lisääminen: Budjetin etsiminen menon tai tulon kategorian mukaan |
-| 20.4. | 3h         | sekvenssikaavioiden lisääminen arkkitehtuuriin, testien tekeminen budget- ja user-serviceihin          |
-| yht.  | 22h 35 min |
+| 20.4. | 4h         | sekvenssikaavioiden lisääminen arkkitehtuuriin, testien tekeminen budget- ja user-serviceihin, releasen julkaisu (ja bugien korjausten jälkeen päivitetyn version julkaisu) |
+| yht.  | 23h 35 min |
