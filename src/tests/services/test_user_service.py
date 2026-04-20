@@ -3,8 +3,7 @@ from src.entities.user import User
 
 from src.services.user_service import (
     UserService,
-    InvalidCredentialsError,
-    UsernameExistsError
+    InvalidCredentialsError
 )
 
 class FakeUserRepository:

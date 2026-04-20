@@ -1,4 +1,5 @@
 from tkinter import ttk, constants, StringVar
+from src.services.user_service import InvalidCredentialsError
 
 class LoginView:
     def __init__(self, root, user_service, handle_login_success, handle_show_register):
@@ -45,6 +46,6 @@ class LoginView:
             self._message.set("")
             self._message_label.configure(foreground="green")
             self._handle_login_success()
-        except ValueError as e:
+        except InvalidCredentialsError as e:
             self._message.set(str(e))
             self._message_label.configure(foreground="red")

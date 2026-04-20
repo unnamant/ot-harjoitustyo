@@ -1,4 +1,5 @@
 from tkinter import ttk, constants, StringVar
+from src.services.user_service import InvalidCredentialsError, UsernameAlreadyExistsError
 
 class RegisterView:
     def __init__(self, root, user_service, handle_back_to_login):
@@ -43,6 +44,6 @@ class RegisterView:
             self._user_service.register(self._username.get(), self._password.get())
             self._message.set("Rekisteröinti onnistui. Voit kirjautua sisään.")
             self._message_label.configure(foreground="green")
-        except ValueError as e:
+        except (InvalidCredentialsError, UsernameAlreadyExistsError) as e:
             self._message.set(str(e))
             self._message_label.configure(foreground="red")

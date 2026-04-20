@@ -7,7 +7,7 @@ class InvalidCredentialsError(Exception):
     pass
 
 
-class UsernameExistsError(Exception):
+class UsernameAlreadyExistsError(Exception):
     pass
 
 class UserService:
@@ -27,7 +27,7 @@ class UserService:
             raise InvalidCredentialsError("Käyttäjätunnuksen tulee olla yli 3 merkkiä pitkä")
 
         if self._user_repository.find_by_username(username):
-            raise UsernameExistsError("Käyttäjätunnus on jo käytössä")
+            raise UsernameAlreadyExistsError("Käyttäjätunnus on jo käytössä")
 
         self._validate_password(password)
 
