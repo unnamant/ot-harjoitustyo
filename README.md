@@ -18,7 +18,7 @@ Ohjeet:
 2. Siirry kansioon, missä lähdekoodi sijaitsee
 3. Pura zip-paketti seuraavalla komennolla:
 ```bash
-unzip ot-harjoitustyo-viikko5.zip
+unzip ot-harjoitustyo-viikko5.1.zip
 ```
 4. Katso alta ohjeet sovelluksen riippuvuuksien asennukseen ja käynnistykseen
 
