@@ -39,3 +39,69 @@ Luokat kuvaavat käyttäjiä, käyttäjien budjetteja ja budjettien meno-tulo-me
 
 BudgetService käyttää tietojen pysyväistallennukseen *BudgetRepository* -luokkaa ja UserService käyttää *UserRepository* -luokkaa.
 
+## Päätoiminnallisuus
+Kuvataan Budjetti-sovelluksen toimintalogiikan päätoiminnallisuuksia sekvenssikaavioilla.
+
+Kun sovellus aukeaa, käyttäjä voi täyttää suoraan tiedot käyttäjätunnukseen ja salasanaan ja painaa napista "kirjaudu", tai rekisteröityä sivun vasemmasta alakulmasta napista "rekisteröidy", joka vie rekisteröitymissivulle.
+
+Tarkastellaan ensin käyttäjän kirjautumista:
+
+### Käyttäjän kirjautuminen
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI as LoginView
+  participant UserService
+  participant UserRepository
+
+  User->>UI: click "Kirjaudu" button
+  UI->>UserService: login("unnis", "salainen123!")
+  UserService->>UserRepository: find_by_username("unnis")
+  UserRepository-->>UserService: user
+  UserService->>UserService: verify password
+  UserService->>UserService: set current_user = user
+  UserService-->>UI: current_user
+  UI->>UI: show_menu()
+```
+
+### Käyttäjän rekisteröiminen (uusi käyttäjätunnus)
+Kun halutaan rekisteröidä uusi käyttäjä, painetaan ensiksi avautuvan kirjautumissivun vasemmassa alareunassa nappia "Rekisteröidy", joka vie rekisteröitymissivulle, jossa tapahtuu seuraavaa:
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI as RegisterView
+  participant UserService
+  participant UserRepository
+
+  User->>UI: click "Rekisteröidy" button
+  UI->>UserService: register("unnis", "salainen123!")
+  UserService->>UserRepository: find_by_username("unnis")
+  UserRepository-->>UserService: None
+  UserService->>UserService: _validate_password(salainen123!)
+  UserService->>UserService: _hash_password(salainen123!)
+  UserService->>UserRepository: create("unnis", password(hash))
+  UserRepository-->>UserService: user
+  UserService-->>UI: user
+  UI->>UI: message.set(Rekisteröinti onnistui. Voit kirjautua sisään.")
+```
+### Budjetin luominen
+Kun halutaan luoda uusi budjetti, painetaan napista "Luo budjetti", jonka jälkeen tapahtuu seuraava:
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI as AddBudgetView
+  participant BudgetService
+  participant BudgetRepository
+  participant budget
+
+  User->>UI: click "Tallenna"
+  UI->>BudgetService: add_budget("kesän kuukausien budjetti", "2026", "budjetointi kesälle 2026")
+  BudgetService->>BudgetService: get_current_username()
+  BudgetService->>budget: Budget(id, "kesän kuukausien budjetti", "2026", "budjetointi kesälle 2026")
+  BudgetService->>BudgetRepository: create(budget)
+  BudgetRepository-->>BudgetService: budget
+  BudgetService-->>UI: budget 
+  UI->>UI: message.set(Budjetti "kesän kuukausien budjetti" lisätty."
+```
+
