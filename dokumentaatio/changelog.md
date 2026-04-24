@@ -19,3 +19,6 @@
 - Käyttäjä pystyy kirjautumaan ulos sovelluksesta
 - Käyttäjä pystyy avaamaan valitun budjetin tiedot listasta
 - Käyttäjä pystyy etsimään budjetin sen tulon tai menon kategorian mukaan
+
+### Viikko 6
+- Käyttäjä pystyy muokkaamaan budjettia
