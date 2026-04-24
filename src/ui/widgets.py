@@ -3,7 +3,7 @@
 from tkinter import ttk, constants, StringVar, Listbox, END
 
 class PeriodPicker:
-    """Graafinen korvike ask_period_key():lle.
+    """
     - Päivä: syötetään Entryyn
     - Kuukausi: valitaan Combobox-listasta (kirjoitettu muoto)
     - Vuosi: syötetään Entryyn
@@ -33,11 +33,9 @@ class PeriodPicker:
         self._value_label = ttk.Label(self._frame, text="")
         self._value_label.grid(row=1, column=0, sticky=constants.W, padx=5, pady=5)
 
-        # Entry (päivä/vuosi)
         self._value_entry = ttk.Entry(self._frame, textvariable=self._value_var)
         self._value_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        # Combobox (kuukausi)
         self._month_combo = ttk.Combobox(
             self._frame,
             textvariable=self._month_var,
@@ -57,7 +55,7 @@ class PeriodPicker:
     def grid(self, **kwargs):
         self._frame.grid(**kwargs)
 
-    def _update_inputs(self, _event=None):
+    def _update_inputs(self, event=None):
         t = self._type_var.get()
 
         if t == "Kuukausi":
@@ -72,7 +70,8 @@ class PeriodPicker:
             self._value_label.configure(text="Anna vuosi")
             self._month_combo.grid_remove()
             self._value_entry.grid()
-    def get_period_key(self) -> str | None:
+
+    def get_period_key(self):
         t = self._type_var.get()
 
         if t == "Kuukausi":
@@ -81,6 +80,23 @@ class PeriodPicker:
 
         value = self._value_var.get().strip()
         return value or None
+    
+    def set_period_key(self, period_key: str):
+        if period_key in [
+            "tammikuu", "helmikuu", "maaliskuu", "huhtikuu",
+            "toukokuu", "kesäkuu", "heinäkuu", "elokuu",
+            "syyskuu", "lokakuu", "marraskuu", "joulukuu",
+        ]:
+            self._type_var.set("Kuukausi")
+            self._month_var.set(period_key)
+        elif len(period_key) == 4 and period_key.isdigit():
+            self._type_var.set("Vuosi")
+            self._value_var.set(period_key)
+        else:
+            self._type_var.set("Päivä")
+            self._value_var.set(period_key)
+        
+        self._update_inputs()
 
 class BudgetPicker:
     """GUI-vastine show_budgets_and_choose_index()-funktiolle."""

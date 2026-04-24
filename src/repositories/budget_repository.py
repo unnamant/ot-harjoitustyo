@@ -59,6 +59,18 @@ class BudgetRepository:
         self._connection.commit()
         return Entry(cursor.lastrowid, entry.entry_type, entry.amount, entry.category)
 
+    def update(self, budget_id: int, budget: Budget):
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            """UPDATE budgets SET name = ?, budget_period = ?, comment = ? 
+            WHERE id = ? AND user_id = ?""",
+            (budget.name, budget.budget_period, budget.comment, budget_id)
+        )
+
+        self._connection.commit()
+        return budget
+
     def list_by_budget(self, budget_id: int):
         cursor = self._connection.cursor()
         cursor.execute(
