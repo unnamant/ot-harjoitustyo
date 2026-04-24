@@ -283,6 +283,7 @@ class BudgetDetailsView:
         entries = self._app.list_entries(self._budget_index)
 
         ttk.Label(master=self._frame, text=f"{budget.name} ({budget.budget_period})").grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
+        ttk.Label(master=self._frame, text=f"{budget.comment}").grid(row=1, column=0, sticky=constants.W, padx=5, pady=5)
 
         if entries:
             text = "\n".join([f"{e.entry_type} {e.amount}€ ({e.category})" for e in entries])
@@ -291,16 +292,16 @@ class BudgetDetailsView:
 
         balance = self._app.balance(self._budget_index)
 
-        ttk.Label(master=self._frame, text=text, justify=constants.LEFT).grid(row=1, column=0, sticky=constants.W, padx=5, pady=5)
+        ttk.Label(master=self._frame, text=text, justify=constants.LEFT).grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
 
         ttk.Label(
             master=self._frame,
             text=f"Saldo: {balance} €"
-        ).grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
+        ).grid(row=3, column=0, sticky=constants.W, padx=5, pady=5)
 
-        ttk.Button(master=self._frame, text="Muokkaa budjettia", command=self._handle_edit).grid(row=3, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Muokkaa budjettia", command=self._handle_edit).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
 
