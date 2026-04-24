@@ -22,3 +22,4 @@
 
 ### Viikko 6
 - Käyttäjä pystyy muokkaamaan budjettia
+- Jaettu käyttöliittymä omiin tiedostoihin luokkien/toiminnallisuuksien perusteella
