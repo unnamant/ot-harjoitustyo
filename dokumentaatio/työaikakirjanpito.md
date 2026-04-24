@@ -14,4 +14,5 @@
 | 16.4. | 1h         | toiminnallisuuden lisääminen: Valitun budjetin tietojen avaaminen listasta, käyttäjän uloskirjautuminen |
 | 17.4. | 1h         | toiminnallisuuden lisääminen: Budjetin etsiminen menon tai tulon kategorian mukaan |
 | 20.4. | 4h         | sekvenssikaavioiden lisääminen arkkitehtuuriin, testien tekeminen budget- ja user-serviceihin, releasen julkaisu (ja bugien korjausten jälkeen päivitetyn version julkaisu) |
-| yht.  | 23h 35 min |
+| 24.4. | 3h         | muokkaus-toiminnallisuuden lisääminen, käyttöliittymän ryhmittely luokittain, käyttöohjeen muodostaminen omaksi tiedostoksi |
+| yht.  | 26h 35 min |
