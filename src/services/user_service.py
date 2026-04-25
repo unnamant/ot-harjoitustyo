@@ -13,16 +13,27 @@ class UsernameAlreadyExistsError(Exception):
 class UserService:
     """Käyttäjään liittyvistä toiminnoista vastaava luokka."""
     def __init__(self, user_repository = UserRepository):
+        """§Luokan konstruktori, joka ottaa parametrina käyttäjärepositorion."""
+
         self._user_repository = user_repository
         self._current_user: User
 
     def current_user(self):
+        """Palauttaa nykyisen käyttäjätiedot User-oliona,
+        tai None jos käyttäjää ei ole kirjautuneena."""
+
         return self._current_user
 
     def logout(self):
+        """Kirjaa käyttäjän ulos asettamalla nykyisen käyttäjän tiedot Noneksi."""
+
         self._current_user = None
 
     def register(self, username: str, password: str):
+        """Rekisteröi uuden käyttäjän tarkistamalla ensin,
+        että käyttäjätunnus ja salasana täyttävät vaatimukset,
+        ja luomalla sitten uuden User-olion ja tallentamalla sen tietokantaan."""
+
         if len(username) <= 3:
             raise InvalidCredentialsError("Käyttäjätunnuksen tulee olla yli 3 merkkiä pitkä")
 
@@ -36,6 +47,10 @@ class UserService:
         return user
 
     def login(self, username: str, password: str):
+        """Kirjaa käyttäjän sisään tarkistamalla ensin,
+        että käyttäjätunnus ja salasana täyttävät vaatimukset,
+        ja asettamalla sitten nykyisen käyttäjän tiedot vastaavaksi User-olioksi."""
+
         user = self._user_repository.find_by_username(username)
         if not user:
             raise InvalidCredentialsError("Käyttäjätunnus on väärä tai sitä ei ole")
@@ -46,6 +61,9 @@ class UserService:
         return user
 
     def _validate_password(self, password: str):
+        """Apumetodi, joka tarkistaa, että salasana täyttää vaatimukset:
+        yli 8 merkkiä pitkä, sisältää ainakin yhden numeron ja yhden erikoismerkin."""
+
         if len(password) <= 8:
             raise InvalidCredentialsError("Salasanan tulee olla yli 8 merkkiä pitkä")
 
