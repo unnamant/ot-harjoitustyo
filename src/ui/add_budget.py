@@ -2,7 +2,10 @@ from tkinter import ttk, constants, StringVar
 from src.ui.widgets import PeriodPicker
 
 class AddBudgetView:
+    """Käyttöliittymäluokka, joka vastaa budjetin lisäämisen näkymästä."""
+
     def __init__(self, root, app, handle_back):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._app = app
         self._handle_back = handle_back
@@ -16,9 +19,11 @@ class AddBudgetView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.X, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _initialize(self):

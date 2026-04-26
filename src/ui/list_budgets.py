@@ -2,7 +2,10 @@ from tkinter import ttk, constants, StringVar
 from src.ui.widgets import BudgetPicker
 
 class ListBudgetsView:
+    """Käyttöliittymäluokka, joka vastaa budjettien listauksen näkymästä."""
+
     def __init__(self, root, app, handle_back, show_budget):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._app = app
         self._handle_back = handle_back
@@ -14,9 +17,11 @@ class ListBudgetsView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.BOTH, expand=True, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _open(self):
@@ -45,7 +50,10 @@ class ListBudgetsView:
     
 
 class BudgetDetailsView:
+    """Käyttöliittymäluokka, joka vastaa yksittäisen budjetin tietojen näyttämisestä."""
+
     def __init__(self, root, app, budget_index, handle_back, handle_edit):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._app = app
         self._budget_index = budget_index
@@ -56,9 +64,11 @@ class BudgetDetailsView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.BOTH, expand=True, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _initialize(self):

@@ -2,7 +2,10 @@ from tkinter import ttk, constants, StringVar
 from src.services.user_service import InvalidCredentialsError, UsernameAlreadyExistsError
 
 class RegisterView:
+    """Käyttöliittymäluokka, joka vastaa rekisteröitymisnäkymästä."""
+
     def __init__(self, root, user_service, handle_back_to_login):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._user_service = user_service
         self._handle_back_to_login = handle_back_to_login
@@ -15,9 +18,11 @@ class RegisterView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.X, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _initialize(self):

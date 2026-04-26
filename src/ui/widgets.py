@@ -3,13 +3,10 @@
 from tkinter import ttk, constants, StringVar, Listbox, END
 
 class PeriodPicker:
-    """
-    - Päivä: syötetään Entryyn
-    - Kuukausi: valitaan Combobox-listasta (kirjoitettu muoto)
-    - Vuosi: syötetään Entryyn
-    """
+    """Auttaa käyttöliittymän ajanjakson valitsemiseen joko päivänä, kuukautena tai vuotena."""
 
     def __init__(self, master):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._type_var = StringVar(value="Kuukausi")
         self._value_var = StringVar()
         self._month_var = StringVar(value="tammikuu")
@@ -99,7 +96,7 @@ class PeriodPicker:
         self._update_inputs()
 
 class BudgetPicker:
-    """GUI-vastine show_budgets_and_choose_index()-funktiolle."""
+    """Auttaa käyttöliittymän budjetin valitsemiseen listasta. Näyttää budjettien nimet ja palauttaa valitun indeksin."""
     def __init__(self, master, app):
         self._app = app
         self._frame = ttk.Frame(master=master)

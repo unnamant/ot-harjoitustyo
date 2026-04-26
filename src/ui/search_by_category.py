@@ -1,7 +1,10 @@
 from tkinter import ttk, constants, StringVar, Listbox
 
 class SearchByCategoryView:
+    """Käyttöliittymäluokka, joka vastaa budjettien hakemisesta tulon tai menon kategorian perusteella."""
+
     def __init__(self, root, app, handle_back, handle_open_budget):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._app = app
         self._handle_back = handle_back
@@ -17,9 +20,11 @@ class SearchByCategoryView:
         self._initialize()
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.BOTH, expand=True, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _initialize(self):

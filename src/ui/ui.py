@@ -21,7 +21,10 @@ from src.ui.search_by_category import SearchByCategoryView
 # Koodi generoitu alkuperäisen tekstikäyttöliittymä-koodin pohjalta.
 
 class UI:
+    """Pääkäyttöliittymäluokka, joka vastaa sovelluksen eri näkymien hallinnasta ja vuorovaikutuksesta käyttäjän kanssa."""
+
     def __init__(self, root):
+        """Luokan konstruktori, joka alustaa sovelluksen tietokantayhteyden, palvelut ja näkymät."""
         self._root = root
         self._current_view = None
 
@@ -38,28 +41,34 @@ class UI:
         )
 
     def start(self):
+        """Käynnistää sovelluksen näyttämällä kirjautumisnäkymän."""
         self._show_login()
 
     def _show_login(self):
+        """Näyttää kirjautumisnäkymän."""
         self._hide_current_view()
         self._current_view = LoginView(self._root, self._user_service, self._show_menu, self._show_register)
         self._current_view.pack()
 
     def _handle_logout(self):
+        """Käsittelee uloskirjautumisen ja näyttää kirjautumisnäkymän."""
         self._user_service.logout()
         self._show_login()
 
     def _show_register(self):
+        """Näyttää rekisteröitymisnäkymän."""
         self._hide_current_view()
         self._current_view = RegisterView(self._root, self._user_service, self._show_login)
         self._current_view.pack()
 
     def _hide_current_view(self):
+        """Tuhoaa nykyisen näkymän, jos sellainen on olemassa."""
         if self._current_view:
             self._current_view.destroy()
         self._current_view = None
 
     def _show_menu(self):
+        """Näyttää päävalikon näkymän."""
         self._hide_current_view()
         self._current_view = MenuView(
             self._root,
@@ -74,21 +83,25 @@ class UI:
         self._current_view.pack()
 
     def _show_add_budget(self):
+        """Näyttää budjetin lisäämisen näkymän."""
         self._hide_current_view()
         self._current_view = AddBudgetView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
     def _show_add_entry(self):
+        """Näyttää tulon tai menon lisäämisen näkymän."""
         self._hide_current_view()
         self._current_view = AddEntryView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
     def _show_list_budgets(self):
+        """Näyttää budjettien listauksen näkymän."""
         self._hide_current_view()
         self._current_view = ListBudgetsView(self._root, self._app, self._show_menu, self._show_budget)
         self._current_view.pack()
 
     def _show_budget(self, budget_index):
+        """Näyttää budjetin yksityiskohtien näkymän indeksin perusteella."""
         self._hide_current_view()
         self._current_view = BudgetDetailsView(
             self._root,
@@ -100,35 +113,44 @@ class UI:
         self._current_view.pack()
 
     def _show_delete_budget(self):
+        """Näyttää budjetin poistamisen näkymän."""
         self._hide_current_view()
         self._current_view = DeleteBudgetView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
     def _show_balance(self):
+        """Näyttää budjetin saldon näkymän."""
         self._hide_current_view()
         self._current_view = BalanceView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
     def _show_search_by_category(self):
+        """Näyttää budjettien hakemisen kategorian perusteella näkymän."""
         self._hide_current_view()
         self._current_view = SearchByCategoryView(self._root, self._app, self._show_menu, self._show_budget)
         self._current_view.pack()
 
     def _show_edit_budget(self, budget_index):
+        """Näyttää budjetin muokkaamisen näkymän indeksin perusteella."""
         self._hide_current_view()
         self._current_view = EditBudgetView(self._root, self._app, budget_index, handle_back=lambda: self._show_budget(budget_index))
         self._current_view.pack()
 
 class MenuView:
+    """Käyttöliittymäluokka, joka vastaa päävalikon näkymästä ja sen komponenteista."""
+
     def __init__(self, root, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout, handle_search_by_category):
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._frame = None
         self._initialize(handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout, handle_search_by_category)
 
     def pack(self):
+        """Näyttää näkymän."""
         self._frame.pack(fill=constants.X, padx=10, pady=10)
 
     def destroy(self):
+        """Tuhoaa näkymän ja sen komponentit."""
         self._frame.destroy()
 
     def _initialize(self, handle_add_budget, handle_add_entry, handle_list_budgets, handle_delete_budget, handle_show_balance, handle_logout, handle_search_by_category):
