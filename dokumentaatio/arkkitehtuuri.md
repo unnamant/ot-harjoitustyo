@@ -1,4 +1,40 @@
 # Arkkitehtuurikuvaus
+## Rakenne
+Sovelluksen rakenne noudattaa kerrosarkkitehtuuria: _ui_ vastaa käyttöliittymästä, _services_ sovelluslogiikasta ja _repositories_ tietojen pysyväistallennuksesta. _Entities_ sisältää luokat  **User**, **Entry** ja **Budget**, jotka kuvaavat sovelluksen käyttämiä tietokohteista. Koodin pakkausrakenne on seuraava:
+```mermaid
+classDiagram
+     class ui
+     class services
+     class repositories
+     class entities
+
+     ui..>services
+     services..>repositories
+     services..>entities
+     repositories..>entities
+```
+## Käyttöliittymä
+Käyttöliittymä sisältää kolme päänäkymää:
+- Kirjautuminen
+- Rekisteröityminen
+- Etusivu (main)
+
+Etusivun alta avautuu kuusi näkymää:
+- Lisää budjetti
+- Lisää tulo/meno
+- Listaa budjetit
+- Etsi budjetti
+- Poista budjetti
+- Näytä saldo
+
+"Listaa budjetit" alta avautuu näkymä:
+- Avaa budjetti
+
+Jonka alta avautuu näkymä:
+- Muokkaa budjettia
+
+Näkymiä on yhteensä 11, joista jokainen on toteutettu omana luokkanaan. Näkymistä yksi on aina kerrallaan näkyvissä, ja näyttämisestä vastaa _ui_-luokka. Käyttöliittymä on pyritty eristyttämään sovelluslogiikasta.
+
 ## Sovelluslogiikka
 Sovelluksen loogisen tietomallin muodostavat **User** ja **Budget** -luokat sekä Budgetin sisältämän **Entry** luokan.
 Luokat kuvaavat käyttäjiä, käyttäjien budjetteja ja budjettien meno-tulo-merkintöjä.
@@ -42,7 +78,7 @@ BudgetService käyttää tietojen pysyväistallennukseen *BudgetRepository* -luo
 ## Päätoiminnallisuus
 Kuvataan Budjetti-sovelluksen toimintalogiikan päätoiminnallisuuksia sekvenssikaavioilla.
 
-Kun sovellus aukeaa, käyttäjä voi täyttää suoraan tiedot käyttäjätunnukseen ja salasanaan ja painaa napista "kirjaudu", tai rekisteröityä sivun vasemmasta alakulmasta napista "rekisteröidy", joka vie rekisteröitymissivulle.
+Kun sovellus aukeaa, jos käyttäjällä on jo käyttäjätunnus, hän voi täyttää suoraan tiedot käyttäjätunnukseen ja salasanaan ja painaa napista "kirjaudu", tai rekisteröityä sivun vasemmasta alakulmasta napista "rekisteröidy", joka vie rekisteröitymissivulle.
 
 Tarkastellaan ensin käyttäjän kirjautumista:
 
