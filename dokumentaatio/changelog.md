@@ -23,3 +23,4 @@
 ### Viikko 6
 - Käyttäjä pystyy muokkaamaan budjettia
 - Jaettu käyttöliittymä omiin tiedostoihin luokkien/toiminnallisuuksien perusteella
+- Sovelluksen vaadittavat alustustoimenpiteet voi nyt suorittaa komennolla "poetry run invoke build"
