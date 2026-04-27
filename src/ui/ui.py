@@ -1,11 +1,7 @@
 from tkinter import ttk, constants
 
-from src.database_connection import get_database_connection
-from src.initialize_database import initialize_database
-from src.repositories.budget_repository import BudgetRepository
-from src.repositories.user_repository import UserRepository
-from src.services.budget_service import BudgetService
 from src.services.user_service import UserService
+from src.services.budget_service import BudgetService
 
 from src.ui.login import LoginView
 from src.ui.register import RegisterView
@@ -23,22 +19,12 @@ from src.ui.search_by_category import SearchByCategoryView
 class UI:
     """Pääkäyttöliittymäluokka, joka vastaa sovelluksen eri näkymien hallinnasta ja vuorovaikutuksesta käyttäjän kanssa."""
 
-    def __init__(self, root):
+    def __init__(self, root, user_service: UserService, budget_service: BudgetService):
         """Luokan konstruktori, joka alustaa sovelluksen tietokantayhteyden, palvelut ja näkymät."""
         self._root = root
         self._current_view = None
-
-        self._connection = get_database_connection()
-        initialize_database(self._connection)
-
-        self._user_repo = UserRepository(self._connection)
-        self._budget_repo = BudgetRepository(self._connection)
-        self._user_service = UserService(self._user_repo)
-
-        self._app = BudgetService(
-            self._budget_repo,
-            get_current_username=lambda: self._user_service.current_user().username if self._user_service.current_user() else None
-        )
+        self._user_service = user_service
+        self._app = budget_service
 
     def start(self):
         """Käynnistää sovelluksen näyttämällä kirjautumisnäkymän."""
