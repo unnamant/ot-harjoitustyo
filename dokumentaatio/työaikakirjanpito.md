@@ -17,5 +17,5 @@
 | 24.4. | 3h         | muokkaus-toiminnallisuuden lisääminen, käyttöliittymän ryhmittely luokittain, käyttöohjeen muodostaminen omaksi tiedostoksi |
 | 25.4. | 25 min     | lisätty docstring-dokumentointi sovelluslogiikkaan |
 | 26.4. | 1h         | jatkettu arkkitehtuurikuvausta ja docstring-dokumentaatiota käyttöliittymään |
-| 27.4. | 45 min     | refaktoroitu ui.py, lisätty puuttuvat riippuvuudet, lisätty build.py |
-| yht.  | 28h 45 min |
+| 27.4. | 1h         | refaktoroitu ui.py, lisätty puuttuvat riippuvuudet, lisätty build.py, uusi release |
+| yht.  | 29h        |
