@@ -22,6 +22,10 @@ Asenna riippuvuudet komennolla:
 ```bash
 poetry install
 ```
+Suorita vaadittavat alustustoimenpiteet komennolla:
+```bash
+poetry run invoke build
+```
 Käynnistä sovellus komennolla:
 
 ```bash
