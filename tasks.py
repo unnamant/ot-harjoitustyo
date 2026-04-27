@@ -5,7 +5,6 @@ from invoke import task
 def start(ctx):
     ctx.run("python3 -m src.index", pty=True)
 
-
 @task
 def test(ctx):
     ctx.run("pytest src", pty=True)
@@ -25,3 +24,7 @@ def format(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
+
+@task
+def build(ctx):
+    ctx.run("python3 -m src.build", pty=True)
