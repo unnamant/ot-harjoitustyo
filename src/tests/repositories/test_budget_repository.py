@@ -8,7 +8,7 @@ from src.entities.budget import Budget, Entry
 from src.repositories.user_repository import user_repository
 from src.entities.user import User
 
-class TestTodoRepository(unittest.TestCase):
+class TestBudgetRepository(unittest.TestCase):
     def setUp(self):
         self.connection = get_database_connection()
         drop_tables(self.connection)
