@@ -52,13 +52,14 @@ class ListBudgetsView:
 class BudgetDetailsView:
     """Käyttöliittymäluokka, joka vastaa yksittäisen budjetin tietojen näyttämisestä."""
 
-    def __init__(self, root, app, budget_index, handle_back, handle_edit):
+    def __init__(self, root, app, budget_index, handle_back, handle_edit, handle_delete_budget):
         """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
         self._root = root
         self._app = app
         self._budget_index = budget_index
         self._handle_back = handle_back
         self._handle_edit = handle_edit
+        self._handle_delete_budget = handle_delete_budget
 
         self._frame = None
         self._initialize()
@@ -96,6 +97,10 @@ class BudgetDetailsView:
 
         ttk.Button(master=self._frame, text="Muokkaa budjettia", command=self._handle_edit).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        ttk.Button(master=self._frame, text="Poista budjetti", command=self._handle_delete_budget).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+
+        ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=2, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
+        self._frame.grid_columnconfigure(1, weight=1, minsize=200)
+        self._frame.grid_columnconfigure(2, weight=1, minsize=200)

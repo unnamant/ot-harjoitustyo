@@ -86,6 +86,11 @@ class UI:
         self._current_view = ListBudgetsView(self._root, self._app, self._show_menu, self._show_budget)
         self._current_view.pack()
 
+    def _show_delete_budget(self, index):
+        """Käsittelee budjetin poistamisen indeksin perusteella ja näyttää päävalikon."""
+        self._app.delete_budget(index)
+        self._show_list_budgets()
+
     def _show_budget(self, budget_index):
         """Näyttää budjetin yksityiskohtien näkymän indeksin perusteella."""
         self._hide_current_view()
@@ -94,14 +99,9 @@ class UI:
             self._app,
             budget_index,
             handle_back = self._show_list_budgets,
-            handle_edit = lambda: self._show_edit_budget(budget_index)
+            handle_edit = lambda: self._show_edit_budget(budget_index),
+            handle_delete_budget = lambda: self._show_delete_budget(budget_index)
         )
-        self._current_view.pack()
-
-    def _show_delete_budget(self):
-        """Näyttää budjetin poistamisen näkymän."""
-        self._hide_current_view()
-        self._current_view = DeleteBudgetView(self._root, self._app, self._show_menu)
         self._current_view.pack()
 
     def _show_balance(self):
@@ -158,14 +158,8 @@ class MenuView:
         ttk.Button(master=self._frame, text="Etsi budjetti", command=handle_search_by_category).grid(
             row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
-        ttk.Button(master=self._frame, text="Poista budjetti", command=handle_delete_budget).grid(
-            row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
-        )
-        ttk.Button(master=self._frame, text="Näytä saldo", command=handle_show_balance).grid(
-            row=6, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
-        )
         ttk.Button(master=self._frame, text="Kirjaudu ulos", command=handle_logout).grid(
-            row=7, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
+            row=5, column=0, sticky=(constants.E, constants.W), padx=5, pady=5
         )
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
