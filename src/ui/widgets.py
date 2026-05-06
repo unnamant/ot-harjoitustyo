@@ -13,9 +13,7 @@ class PeriodPicker:
 
         self._frame = ttk.Frame(master=master)
 
-        ttk.Label(self._frame, text="Ajanjakso").grid(
-            row=0, column=0, sticky=constants.W, padx=5, pady=5
-        )
+        ttk.Label(self._frame, text="Ajanjakso").grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
 
         self._type = ttk.Combobox(
             self._frame,
@@ -103,7 +101,7 @@ class BudgetPicker:
 
         ttk.Label(self._frame, text="Valitse budjetti").grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
 
-        self._listbox = Listbox(self._frame, height=7)
+        self._listbox = Listbox(self._frame, height=7, exportselection = False)
         self._listbox.grid(row=1, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=380)
