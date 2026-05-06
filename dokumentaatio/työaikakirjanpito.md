@@ -18,5 +18,6 @@
 | 25.4. | 25 min     | lisätty docstring-dokumentointi sovelluslogiikkaan |
 | 26.4. | 1h         | jatkettu arkkitehtuurikuvausta ja docstring-dokumentaatiota käyttöliittymään |
 | 27.4. | 1h         | refaktoroitu ui.py, lisätty puuttuvat riippuvuudet, lisätty build.py, uusi release |
-| 6.5.  | 30 min     | sovellukset refaktorointia |
-| yht.  | 29h 30 min |
+| 5.5.  | 30 min     | sovelluksen parantamisen aloitus |
+| 6.5.  | 30 min     | sovelluksen parantamista Labtoolista tulleiden ehdotusten perusteella |
+| yht.  | 30 h       |
