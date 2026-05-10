@@ -44,8 +44,10 @@ class BudgetService:
         user_id = self._require_user()
         budget_id = budgets[index].id
         return (
-            self._budget_repository.update(user_id, budget_id, Budget(budget_id, name, budget_period, comment))
-        )
+            self._budget_repository.update(
+            user_id, budget_id,
+            Budget(budget_id, name, budget_period, comment)
+        ))
 
     def add_entry(self, index, entry_type, amount, category):
         """Lisää tulon tai menon indeksin perusteella budjettiin nykyisen käyttäjän budjeteista."""
