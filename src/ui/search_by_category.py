@@ -52,11 +52,9 @@ class SearchByCategoryView:
 
         ttk.Button(master=self._frame, text="Avaa budjetti", command=self._open_selected_budget).grid(row=4, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Button(master=self._frame, text="Muokkaa budjettia", command=self._handle_back).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-
         ttk.Button(master=self._frame, text="Takaisin", command=self._handle_back).grid(row=4, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        ttk.Label(master=self._frame, textvariable=self._message).grid(row=5, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        ttk.Label(master=self._frame, textvariable=self._message).grid(row=6, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)
 

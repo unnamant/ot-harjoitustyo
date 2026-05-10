@@ -36,16 +36,15 @@ class BudgetService:
         return self._budget_repository.delete(user_id, budgets[index].id)
 
     def edit_budget(self, index, name, budget_period, comment):
-        """§Muokkaa budjetin tietoja indeksin perusteella nykyisen käyttäjän budjeteista."""
+        """Muokkaa budjetin tietoja indeksin perusteella nykyisen käyttäjän budjeteista."""
 
         budgets = self.list_budgets()
         if not 0 <= index < len(budgets):
             return False
         user_id = self._require_user()
         budget_id = budgets[index].id
-        self._budget_repository.delete(user_id, budget_id)
         return (
-            self._budget_repository.create(user_id, Budget(budget_id, name, budget_period, comment))
+            self._budget_repository.update(user_id, budget_id, Budget(budget_id, name, budget_period, comment))
         )
 
     def add_entry(self, index, entry_type, amount, category):

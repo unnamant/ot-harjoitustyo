@@ -74,7 +74,7 @@ class BudgetRepository:
         self._connection.commit()
         return Entry(cursor.lastrowid, entry.entry_type, entry.amount, entry.category)
 
-    def update(self, budget_id: int, budget: Budget):
+    def update(self, user_id: int,  budget_id: int, budget: Budget):
         """Päivittää budjetin tietokannassa ja palauttaa päivitetyn budjetin."""
 
         cursor = self._connection.cursor()
@@ -82,7 +82,7 @@ class BudgetRepository:
         cursor.execute(
             """UPDATE budgets SET name = ?, budget_period = ?, comment = ? 
             WHERE id = ? AND user_id = ?""",
-            (budget.name, budget.budget_period, budget.comment, budget_id)
+            (budget.name, budget.budget_period, budget.comment, budget_id, user_id)
         )
 
         self._connection.commit()
