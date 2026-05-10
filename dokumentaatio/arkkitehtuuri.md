@@ -16,24 +16,36 @@ classDiagram
 ## Käyttöliittymä
 Käyttöliittymä sisältää kolme päänäkymää:
 - Kirjautuminen
+<img width="370" height="221" alt="kirjautuminen" src="https://github.com/user-attachments/assets/7262fcf7-d170-4762-9ed7-d1cd437b0344" />
+
 - Rekisteröityminen
+<img width="400" height="221" alt="rekisteröityminen" src="https://github.com/user-attachments/assets/878aa60c-5767-4528-968b-a12acb028d93" />
+
 - Etusivu (main)
+<img width="318" height="289" alt="etusivu" src="https://github.com/user-attachments/assets/88a03324-86ea-432b-b915-d0fa09cd54dc" />
 
-Etusivun alta avautuu kuusi näkymää:
+Etusivun alta avautuu viisi näkymää:
 - Lisää budjetti
+<img width="405" height="289" alt="lisääbudjetti" src="https://github.com/user-attachments/assets/26451f38-dd73-435a-b2bd-6be397e388b5" />
+
 - Lisää tulo/meno
+<img width="405" height="404" alt="lisäätulotaimeno" src="https://github.com/user-attachments/assets/63024131-675d-4fac-87e4-a77e5a6fcf94" />
+
 - Listaa budjetit
-- Etsi budjetti
-- Poista budjetti
-- Näytä saldo
+<img width="611" height="321" alt="listaabudjetit" src="https://github.com/user-attachments/assets/ec8b35d7-0eb6-4c17-bf4c-5366fd93ccf9" />
 
-"Listaa budjetit" alta avautuu näkymä:
-- Avaa budjetti
+- Etsi budjetti tulon tai menon kategorian perusteella
+<img width="401" height="404" alt="etsi" src="https://github.com/user-attachments/assets/0e188e3e-e775-4c00-b7b8-86542df46cee" />
 
-Jonka alta avautuu näkymä:
-- Muokkaa budjettia
+- Kirjaudu ulos
 
-Näkymiä on yhteensä 11, joista jokainen on toteutettu omana luokkanaan. Näkymistä yksi on aina kerrallaan näkyvissä, ja näyttämisestä vastaa _ui_-luokka. Käyttöliittymä on pyritty eristyttämään sovelluslogiikasta.
+"Listaa budjetit" kohdasta voi avata budjetin tiedot, jonka jälkeen voi muokata budjettia tai poistaa budjetin:
+<img width="705" height="307" alt="budjetintiedot" src="https://github.com/user-attachments/assets/a8554289-1a01-4323-a640-f127ac2b5999" />
+
+Muokkaa budjettia:
+<img width="401" height="263" alt="muokkaabudjettia" src="https://github.com/user-attachments/assets/191b4695-c05f-41ff-9073-f0587f97470c" />
+
+Näkymiä on yhteensä 9, joista jokainen on toteutettu omana luokkanaan. Näkymistä yksi on aina kerrallaan näkyvissä, ja näyttämisestä vastaa _ui_-luokka. Käyttöliittymä on pyritty eristyttämään sovelluslogiikasta.
 
 ## Sovelluslogiikka
 Sovelluksen loogisen tietomallin muodostavat **User** ja **Budget** -luokat sekä Budgetin sisältämän **Entry** luokan.
