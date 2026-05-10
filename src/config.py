@@ -8,8 +8,5 @@ try:
 except FileNotFoundError:
     pass
 
-BUDGETS_FILENAME = os.getenv("BUDGETS_FILENAME") or "budgets.csv"
-BUDGETS_FILE_PATH = os.path.join(dirname, "..", "data", BUDGETS_FILENAME)
-
 DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
 DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)
