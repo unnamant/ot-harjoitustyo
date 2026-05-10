@@ -13,18 +13,15 @@ Kirjautuminen:
   - [x] Jos käyttäjätunnusta ei ole tai se on väärin, järjestelmä ilmoittaa siitä
   - [x] Jos salasana on väärin, järjestelmä ilmoittaa siitä
 ### Kirjautumisen jälkeen
-- [x] Käyttäjä voi valita budjetoinnin ajan: päivä, kuukausi tai vuosi
-- [x] Käyttäjä lisää tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
-- [x] Käyttäjä näkee tulojen ja menojen eron.
+- [x] Käyttäjä voi luoda uuden budjetin:
+  - [x] Käyttäjä nimeää budjetin haluamallaan tavalla   
+  - [x] Käyttäjän tulee valita budjetille aika: päivä, kuukausi tai vuosi
+  - [x] Käyttäjä voi halutessaan lisätä budjettiin kommentin
+  - [x] Jos otsikkoa ei ole tai ajanjaksoa valittu, järjestelmä ilmoittaa siitä
+- [x] Käyttäjä voi lisätä tuloja ja menoja budjettiin (nimi, kategoria, summa, tyyppi)
+- [x] Käyttäjä näkee tulojen ja menojen eron
 - [x] Budjetin tiedot avautuvat "listaa budjetit" kohdassa
 - [x] Budjettia voi muokata "listaa budjetit" kohdassa
 - [x] Käyttäjä voi suodattaa budjetteja (tulon tai menon kategorian mukaan)
-
-- [x] Käyttäjä voi nähdä vain omat budjetoinnit.
-
-- [x] Käyttäjä voi kirjautua ulos järjestelmästä.
-## Perusversiota laajentavat jatkokehitysideat
-Ajan salliessa perusversiota täydennetään esim. seuraavilla toiminnallisuuksilla:
-- Käyttäjä voi merkitä, miten on pysynyt budjetissa/kuinka budjetointi on onnistunut
-- Käyttäjä voi julkaista budjetointisuunnitelmansa muille käyttäjille julki
-- Käyttäjät voivat kommentoida toisten julkisiin budjetointeihin
+- [x] Käyttäjä voi nähdä vain omat budjetoinnit
+- [x] Käyttäjä voi kirjautua ulos sovelluksesta
