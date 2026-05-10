@@ -153,3 +153,31 @@ sequenceDiagram
   UI->>UI: message.set(Budjetti "kesän kuukausien budjetti" lisätty."
 ```
 
+## Pysyväistallennus
+Sovellus tallentaa käyttäjät, budjetit sekä budjettien tulot ja menot SQLite-tietokantaan. Tietokantatiedosto sijaitsee projektin data/-hakemistossa.
+
+Käyttöliittymän ja sovelluslogiikan kannalta pysyväistallennus on kapseloitu repositorioihin, mikä helpottaa jatkokehitystä ja testausta.
+
+Testeissä käytetään erillistä tietokantaa (`test-database.sqlite`), jotta testiajo ei muuta kehitystietokantaa.
+
+### Tietokannan konfigurointi ja sijainti
+Tietokannan tiedostonimi määritellään ympäristömuuttujalla DATABASE_FILENAME. Oletuksena käytetään tiedostoa database.sqlite.
+
+- Kehitysympäristö: `.env`
+  - `DATABASE_FILENAME=database.sqlite`
+- Testit: `.env.test`
+  - `DATABASE_FILENAME=test-database.sqlite`
+
+Tiedostonimi luetaan moduulissa `src/config.py`, joka muodostaa polun:
+
+- `DATABASE_FILE_PATH = <projektin_juuri>/data/<DATABASE_FILENAME>`
+
+### Tietokannan alustaminen
+Tietokantarakenne luodaan `src/initialize_database.py`-moduulissa funktion `initialize_database` avulla. Se luo taulut, jos niitä ei vielä ole olemassa (`CREATE TABLE IF NOT EXISTS ...`).
+
+Tietokantayhteys luodaan moduulissa `src/database_connection.py`:
+
+- `sqlite3.connect(DATABASE_FILE_PATH)`
+- `connection.row_factory = sqlite3.Row`
+
+Yhteys haetaan sovelluksessa funktiolla `get_database_connection()`.

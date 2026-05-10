@@ -11,9 +11,8 @@ unzip ot-harjoitustyo-viikko6.zip
 ```
 4. Katso alta ohjeet sovelluksen riippuvuuksien asennukseen ja käynnistykseen
 ## Konfigurointi
-Tallennukseen käytettävien tiedostojen nimiä voi halutessaan konfiguroida käynnistyshakemistossa ".env". Tiedostot luodaan automaattisesti _data_-hakemistoon, jos niitä ei vielä ole. Tiedosto on seuraavassa muodossa:
+Tallennukseen käytettävän tiedoston nimeä voi halutessaan muokata käynnistyshakemistossa ".env". Tiedosto luodaan automaattisesti _data_-hakemistoon, jos sitä ei vielä ole. Tiedosto on seuraavassa muodossa:
 ```
-BUDGETS_FILENAME=budgets.csv
 DATABASE_FILENAME=database.sqlite
 ```
 ## Sovelluksen asennus ja käynnistys
