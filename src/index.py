@@ -11,6 +11,7 @@ from src.services.budget_service import BudgetService
 from src.services.user_service import UserService
 
 def create_services():
+    """Funktio, joka luo ja alustaa sovelluksen tietokantayhteyden, repositoriot ja palvelut."""
     connection = get_database_connection()
     initialize_database(connection)
 
@@ -28,6 +29,7 @@ def create_services():
     return user_service, budget_service
 
 def main():
+    """Sovelluksen pääfunktio, joka luo käyttöliittymän ja käynnistää sovelluksen. """
     window = Tk()
     window.title("The Budget App")
     user_service, budget_service = create_services()

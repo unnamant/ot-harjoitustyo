@@ -1,6 +1,7 @@
 from src.database_connection import get_database_connection
 
 def drop_tables(connection):
+    """Funktio, joka poistaa tietokannasta vanhat taulut, jos niitä on."""
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -16,6 +17,7 @@ def drop_tables(connection):
     connection.commit()
 
 def create_tables(connection):
+    """Funktio, joka luo tietokantaan tarvittavat taulut, jos niitä ei vielä ole."""
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -54,6 +56,7 @@ def create_tables(connection):
     connection.commit()
 
 def initialize_database(connection = None):
+    """Funktio, joka alustaa sovelluksen tietokannan. Luo uudet taulut."""
     if connection is None:
         connection = get_database_connection()
     create_tables(connection)
