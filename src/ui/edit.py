@@ -5,7 +5,14 @@ class EditBudgetView:
     """Käyttöliittymäluokka, joka vastaa budjetin muokkaamisen näkymästä."""
 
     def __init__(self, root, budget_service, budget_index, handle_back):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            budget_service: Budjettiin liittyviä toimintoja tarjoava palvelu, jota näkymä käyttää.
+            budget_index: Muokattavan budjetin indeksi budjettilistassa.
+            handle_back: Funktio, joka kutsutaan, kun käyttäjä haluaa palata edelliseen näkymään.
+        """
         self._root = root
         self._budget_service = budget_service
         self._budget_index = budget_index

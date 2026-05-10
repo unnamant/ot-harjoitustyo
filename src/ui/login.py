@@ -5,7 +5,14 @@ class LoginView:
     """Käyttöliittymäluokka, joka vastaa kirjautumisnäkymästä."""
 
     def __init__(self, root, user_service, handle_login_success, handle_show_register):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            user_service: Käyttäjään liittyviä toimintoja tarjoava palvelu, jota näkymä käyttää.
+            handle_login_success: Funktio, joka kutsutaan, kun käyttäjä onnistuu kirjautumaan sisään.
+            handle_show_register: Funktio, joka kutsutaan, kun käyttäjä haluaa siirtyä rekisteröitymisnäkymään.
+        """
         self._root = root
         self._user_service = user_service
         self._handle_login_success = handle_login_success

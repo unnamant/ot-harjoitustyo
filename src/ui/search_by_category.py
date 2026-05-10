@@ -4,7 +4,14 @@ class SearchByCategoryView:
     """Käyttöliittymäluokka, joka vastaa budjettien hakemisesta tulon tai menon kategorian perusteella."""
 
     def __init__(self, root, app, handle_back, handle_open_budget):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            app: Sovelluksen päälogiikkaa tarjoava olio, jonka metodeja näkymä käyttää.
+            handle_back: Funktio, joka kutsutaan, kun käyttäjä haluaa palata edelliseen näkymään.
+            handle_open_budget: Funktio, joka kutsutaan, kun käyttäjä haluaa avata budjetin tarkemmat tiedot.
+        """
         self._root = root
         self._app = app
         self._handle_back = handle_back

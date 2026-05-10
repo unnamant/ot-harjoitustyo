@@ -5,7 +5,13 @@ class RegisterView:
     """Käyttöliittymäluokka, joka vastaa rekisteröitymisnäkymästä."""
 
     def __init__(self, root, user_service, handle_back_to_login):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            user_service: Käyttäjään liittyviä toimintoja tarjoava palvelu, jota näkymä käyttää.
+            handle_back_to_login: Funktio, joka kutsutaan, kun käyttäjä haluaa palata kirjautumisnäkymään.
+        """
         self._root = root
         self._user_service = user_service
         self._handle_back_to_login = handle_back_to_login

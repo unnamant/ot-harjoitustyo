@@ -5,7 +5,13 @@ class DeleteBudgetView:
     """Käyttöliittymäluokka, joka vastaa budjetin poistamisen näkymästä."""
 
     def __init__(self, root, app, handle_back):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            app: Sovelluksen päälogiikkaa tarjoava olio, jonka metodeja näkymä käyttää.
+            handle_back: Funktio, joka kutsutaan, kun käyttäjä haluaa palata edelliseen näkymään.
+        """
         self._root = root
         self._app = app
         self._handle_back = handle_back

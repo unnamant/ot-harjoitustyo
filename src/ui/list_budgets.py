@@ -5,7 +5,15 @@ class ListBudgetsView:
     """Käyttöliittymäluokka, joka vastaa budjettien listauksen näkymästä."""
 
     def __init__(self, root, app, handle_back, show_budget):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            app: Sovelluksen päälogiikkaa tarjoava olio, jonka metodeja näkymä käyttää.
+            handle_back: Funktio, joka kutsutaan, kun käyttäjä haluaa palata edelliseen näkymään.
+            show_budget: Funktio, joka kutsutaan, kun käyttäjä haluaa avata budjetin tarkemmat tiedot. 
+            Funktio saa parametrinaan budjetin indeksin budjettilistassa.
+        """
         self._root = root
         self._app = app
         self._handle_back = handle_back
@@ -53,7 +61,18 @@ class BudgetDetailsView:
     """Käyttöliittymäluokka, joka vastaa yksittäisen budjetin tietojen näyttämisestä."""
 
     def __init__(self, root, app, budget_index, handle_back, handle_edit, handle_delete_budget):
-        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit."""
+        """Luokan konstruktori, joka alustaa näkymän ja sen komponentit.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymä asetetaan.
+            app: Sovelluksen päälogiikkaa tarjoava olio, jonka metodeja näkymä käyttää.
+            budget_index: Näytettävän budjetin indeksi budjettilistassa.
+            handle_back: Funktio, joka kutsutaan, kun käyttäjä haluaa palata edelliseen näkymään.
+            handle_edit: Funktio, joka kutsutaan, kun käyttäjä haluaa muokata budjettia.
+            Funktio saa parametrinaan budjetin indeksin budjettilistassa.
+            handle_delete_budget: Funktio, joka kutsutaan, kun käyttäjä haluaa poistaa budjetin.
+            Funktio saa parametrinaan budjetin indeksin budjettilistassa.
+        """
         self._root = root
         self._app = app
         self._budget_index = budget_index

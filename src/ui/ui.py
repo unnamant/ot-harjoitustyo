@@ -20,7 +20,14 @@ class UI:
     """Pääkäyttöliittymäluokka, joka vastaa sovelluksen eri näkymien hallinnasta ja vuorovaikutuksesta käyttäjän kanssa."""
 
     def __init__(self, root, user_service: UserService, budget_service: BudgetService):
-        """Luokan konstruktori, joka alustaa sovelluksen tietokantayhteyden, palvelut ja näkymät."""
+        """Luokan konstruktori, joka alustaa sovelluksen tietokantayhteyden, palvelut ja näkymät.
+        
+        Args:
+            root: Tkinterin juurikomponentti, johon näkymät asetetaan.
+            user_service: Käyttäjään liittyviä toimintoja tarjoava palvelu.
+            budget_service: Budjettiin liittyviä toimintoja tarjoava palvelu.
+        """
+
         self._root = root
         self._current_view = None
         self._user_service = user_service
