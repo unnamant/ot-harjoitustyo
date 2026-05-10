@@ -20,4 +20,5 @@
 | 27.4. | 1h         | refaktoroitu ui.py, lisätty puuttuvat riippuvuudet, lisätty build.py, uusi release |
 | 5.5.  | 30 min     | sovelluksen parantamisen aloitus |
 | 6.5.  | 30 min     | sovelluksen parantamista Labtoolista tulleiden ehdotusten perusteella |
-| yht.  | 30 h       |
+| 10.5. | 3h         | sovelluksen viimeistelyä, hiomista, releasen teko, testausdokumentin teko, arkkitehtuurikuvauksen päivitys |
+| yht.  | 33 h       |
