@@ -11,7 +11,7 @@ unzip ot-harjoitustyo-viikko6.zip
 ```
 4. Katso alta ohjeet sovelluksen riippuvuuksien asennukseen ja käynnistykseen
 ## Konfigurointi
-Tallennukseen käytettävien tiedostojen nimiä voi halutessaan konfiguroida käynnistyshakemistossa ".env". Tiedosto luodaan automaattisesti _data_-hakemistoon, jos sitä ei vielä ole. Tiedosto on seuraavassa muodossa:
+Tallennukseen käytettävän tiedoston nimeä voi halutessaan muokata käynnistyshakemistossa ".env". Tiedosto luodaan automaattisesti _data_-hakemistoon, jos sitä ei vielä ole. Tiedosto on seuraavassa muodossa:
 ```
 DATABASE_FILENAME=database.sqlite
 ```
