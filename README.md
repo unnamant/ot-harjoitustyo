@@ -1,5 +1,7 @@
 # BudgetApp
 *Budget-sovelluksella* käyttäjän on mahdollista pitää kirjaa **budjetoinnistaan**.
+## Release
+ [Loppupalautus](../../releases/latest)
 ## Dokumentaatio
 
 - [vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
