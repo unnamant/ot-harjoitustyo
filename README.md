@@ -12,6 +12,8 @@
 
 - [käyttöohje](dokumentaatio/kayttoohje.md)
 
+- [testaus](dokumentaatio/testausdokumentti.md)
+
 ### Testaus
 
 Testit suoritetaan komennolla:
